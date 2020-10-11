@@ -11,17 +11,32 @@ class Player {
 
     // The y position never changes, so we don't need to store it in a property. It represents the y position of the top of the
     // hamburger. The y position is the distance from the top margin of the browsing area.
-    const y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
+    this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
 
     // We create a DOM node. We will be updating the DOM node every time we move the player, so we store a reference to the
     // DOM node in a property.
-    this.domElement = document.createElement('img');
-    this.domElement.src = 'images/player.png';
-    this.domElement.style.position = 'absolute';
+    this.domElement = document.createElement("img");
+    this.domElement.src = "images/spaceship.png";
+    this.domElement.style.position = "absolute";
     this.domElement.style.left = `${this.x}px`;
-    this.domElement.style.top = ` ${y}px`;
-    this.domElement.style.zIndex = '10';
+    this.domElement.style.top = ` ${this.y}px`;
+    this.domElement.style.zIndex = "10";
     root.appendChild(this.domElement);
+  }
+  getRight() {
+    return this.x + PLAYER_WIDTH - 5;
+  }
+
+  getLeft() {
+    return this.x + 5;
+  }
+
+  getTop() {
+    return this.y + 10;
+  }
+
+  getBottom() {
+    return this.y + PLAYER_HEIGHT - 10;
   }
 
   // This method will be called when the user presses the left key. See in Engine.js

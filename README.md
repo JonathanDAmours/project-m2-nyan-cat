@@ -1,6 +1,6 @@
 # Object Oriented Programming Game Project
 
-<p align="center"><img src="./images/screenshot.png"></p>
+<p style="text-align:center;"><img src="./images/screenshot.png"></p>
 
 # Introduction
 
@@ -79,7 +79,7 @@ In order for the project to be deemed _successful_ and for you to receive a pass
 
 ### DUE DATE
 
-Your project is due on XX XXX, XXXX by XX:XX.
+Your project is due on 13th OCT, 2020 by 10H00am.
 
 ## Useful Links
 

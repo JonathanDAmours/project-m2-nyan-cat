@@ -1,12 +1,25 @@
 <html>
   <head>
     <title>Nyan Kat</title>
+    <link id="font" href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="app"></div>
+    <audio id="spaceFX" autoplay>
+      <source src="music/Midnight Crawlers_Looping.ogg" type="audio/ogg">
+    </audio>
+    <audio id="astronautFX" autoplay>
+      <source src="music/laser.mp3" type="audio/mpeg">
+    </audio>
+    <h1 id="title"></h1>
+    <p id="instructions"></p>
+    <button id="startButton"></button>
+    <div id="app">
+    </div>
     <script src="js/data.js"></script>
+    <script src="js/Spaceman.js"></script>
     <script src="js/Enemy.js"></script>
     <script src="js/engine-utilities.js"></script>
+    <script src="js/Text.js"></script>
     <script src="js/Engine.js"></script>
     <script src="js/Player.js"></script>
     <script src="js/main.js"></script>
