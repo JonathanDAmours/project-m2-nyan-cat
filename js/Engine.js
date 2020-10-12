@@ -22,6 +22,22 @@ class Engine {
     // Adding the score Board
     this.scoreBoard = new Text(this.root, "20px", "20px");
     this.score = 0;
+    ////
+    this.restart = document.getElementById("restart");
+    this.restart.innerText = "RESTART";
+    this.restart.style.position = "absolute";
+    this.restart.style.left = "309px";
+    this.restart.style.top = "300px";
+    this.restart.style.fontFamily = "Space Mono, monospace";
+    this.restart.style.color = "aqua";
+    this.restart.style.padding = "20px 40px";
+    this.restart.style.cursor = "pointer";
+    this.restart.style.display = "none";
+    this.restart.style.backgroundColor = "black";
+    this.restart.style.border = "none";
+    this.restart.style.outline = "none";
+    ////
+    this.restart.addEventListener("click", this.restartGame);
   }
 
   // The gameLoop will run every few milliseconds. It does several things
@@ -92,20 +108,11 @@ class Engine {
     }
 
     if (this.isPlayerDead()) {
-      document.removeEventListener("keydown", keydownHandler);
+      spaceFX.pause();
       this.gameOver = new Text(this.root, "250px", "215px");
       this.gameOver.gameOver("GAME 0VER");
-      this.enemies.forEach((enemy) => {
-        enemy.update();
-      });
-      spaceFX.pause();
-      this.astronauts.forEach((astronaut) => {
-        astronaut.update();
-      });
+      restart.style.display = "block";
       return;
-    } else {
-      // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
-      setTimeout(this.gameLoop, 20);
     }
 
     if (this.isAstronautCaught()) {
@@ -115,29 +122,19 @@ class Engine {
         astronaut.destroyed = true;
         astronaut.root.removeChild(astronaut.domElement);
       });
-      return;
-    } else {
-      setTimeout(this.gameLoop, 20);
     }
 
     if (this.hasWon()) {
       this.youWon = new Text(this.root, "257px", "215px");
       this.youWon.youWon("Y0U W0N!");
-      this.enemies.forEach((enemy) => {
-        enemy.update();
-      });
       spaceFX.pause();
-      this.astronauts.forEach((astronaut) => {
-        astronaut.update();
-      });
       return;
-    } else {
-      // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
-      setTimeout(this.gameLoop, 20);
     }
+    setTimeout(this.gameLoop, 20);
   };
 
   isPlayerDead = () => {
+    let isDead = false;
     for (let i = 0; i < this.enemies.length; i++) {
       let collisionBT = this.enemies[i].getBottom() > this.player.getTop();
       let collisionRL = this.enemies[i].getRight() >= this.player.getLeft();
@@ -149,10 +146,11 @@ class Engine {
 
       if (isCollision) {
         console.log("***********COLLISION***********");
-        return true;
+        isDead = true;
       }
     }
-    return false;
+    console.log(isDead);
+    return isDead;
   };
 
   isAstronautCaught = () => {
@@ -174,9 +172,17 @@ class Engine {
   };
 
   hasWon = () => {
-    if (this.score == 100000) {
+    if (this.score == 500) {
       return true;
     }
     return false;
+  };
+
+  restartGame = () => {
+    this.gameLoop();
+    this.gameOver.restartOver();
+    this.restart.style.display = "none";
+    spaceFX.play();
+    this.score = 0;
   };
 }

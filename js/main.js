@@ -51,7 +51,7 @@ title.style.padding = "20px";
 
 let instructions = document.getElementById("instructions");
 instructions.innerText =
-  "Welcome to H1GHL1FE, in this game, your ultimate goal is to reach a score of 100'000. Each astronaut that you save will give you extra points, if you let them die, you will lose points. Use the left and right arrow to move the spaceship.";
+  "Welcome to H1GHL1FE, in this game, your ultimate goal is to reach a score of 500. Each astronaut that you save will give you extra points, if you let them die, you will lose points. Use the left and right arrow to move the spaceship.";
 instructions.style.position = "absolute";
 instructions.style.left = "105px";
 instructions.style.top = "170px";

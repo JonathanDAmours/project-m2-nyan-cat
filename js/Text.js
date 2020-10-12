@@ -36,6 +36,10 @@ class Text {
     this.domElement.style.backgroundColor = "black";
   }
 
+  restartOver() {
+    this.domElement.style.display = "none";
+  }
+
   youWon(txt) {
     this.domElement.innerText = txt;
     this.domElement.style.fontFamily = "Space Mono, monospace";
